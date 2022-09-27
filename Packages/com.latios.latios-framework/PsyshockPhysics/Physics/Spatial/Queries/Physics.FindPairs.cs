@@ -307,7 +307,7 @@ namespace Latios.Psyshock
                 {
                     layer     = layer,
                     processor = processor
-                }.ScheduleParallel(2, 1, jh);
+                }.Schedule(2, 1, jh);
             }
 #else
             jh = new FindPairsInternal.LayerSelfPart2
@@ -330,7 +330,7 @@ namespace Latios.Psyshock
             {
                 layer     = layer,
                 processor = processor
-            }.ScheduleParallel(2 * layer.BucketCount - 1, 1, inputDeps);
+            }.Schedule(2 * layer.BucketCount - 1, 1, inputDeps);
         }
         #endregion Schedulers
     }
@@ -388,7 +388,7 @@ namespace Latios.Psyshock
                     layer     = layer,
                     processor = processor,
                     cache     = cache.AsReader()
-                }.ScheduleParallel(2, 1, jh);
+                }.Schedule(2, 1, jh);
             }
 #else
             jh = new FindPairsInternal.LayerSelfPart2
@@ -533,7 +533,7 @@ namespace Latios.Psyshock
                 layerA    = layerA,
                 layerB    = layerB,
                 processor = processor
-            }.ScheduleParallel(3 * layerA.BucketCount - 2, 1, inputDeps);
+            }.Schedule(3 * layerA.BucketCount - 2, 1, inputDeps);
         }
         #endregion Schedulers
     }

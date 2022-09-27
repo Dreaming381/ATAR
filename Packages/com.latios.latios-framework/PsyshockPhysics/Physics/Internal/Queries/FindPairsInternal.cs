@@ -16,7 +16,7 @@ namespace Latios.Psyshock
         {
             #region Jobs
             [BurstCompile]
-            public struct LayerSelfSingle : IJob
+            public struct LayerSelfSingle : IJobBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T                         processor;
@@ -28,7 +28,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerSelfPart1 : IJobParallelFor
+            public struct LayerSelfPart1 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T                         processor;
@@ -41,7 +41,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerSelfPart2 : IJob
+            public struct LayerSelfPart2 : IJobBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T                         processor;
@@ -58,7 +58,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerSelfParallelUnsafe : IJobFor
+            public struct LayerSelfParallelUnsafe : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T                         processor;
@@ -105,7 +105,7 @@ namespace Latios.Psyshock
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             // Scheudle for 2 iterations
             [BurstCompile]
-            public struct LayerSelfPart2_WithSafety : IJobFor
+            public struct LayerSelfPart2_WithSafety : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T processor;
@@ -156,7 +156,7 @@ namespace Latios.Psyshock
 
             // Schedule for (2 * layer.BucketCount - 1) iterations
             [BurstCompile]
-            public struct LayerSelfPart1 : IJobParallelFor, IFindPairsProcessor
+            public struct LayerSelfPart1 : IJobParallelForBurstSchedulable, IFindPairsProcessor
             {
                 [ReadOnly] public CollisionLayer                                 layer;
                 public T                                                         processor;
@@ -188,7 +188,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerSelfPart2 : IJob
+            public struct LayerSelfPart2 : IJobBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer      layer;
                 public T                              processor;
@@ -220,7 +220,7 @@ namespace Latios.Psyshock
 
             // Schedule for 2 iterations
             [BurstCompile]
-            public struct LayerSelfPart2_WithSafety : IJobFor
+            public struct LayerSelfPart2_WithSafety : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T processor;
@@ -277,7 +277,7 @@ namespace Latios.Psyshock
         {
             #region Jobs
             [BurstCompile]
-            public struct LayerLayerSingle : IJob
+            public struct LayerLayerSingle : IJobBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -290,7 +290,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerLayerPart1 : IJobParallelFor
+            public struct LayerLayerPart1 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -306,7 +306,7 @@ namespace Latios.Psyshock
 
             // Schedule for 2 iterations
             [BurstCompile]
-            public struct LayerLayerPart2 : IJobParallelFor
+            public struct LayerLayerPart2 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -337,7 +337,7 @@ namespace Latios.Psyshock
 
             // Schedule for (3 * layer.BucketCount - 2) iterations
             [BurstCompile]
-            public struct LayerLayerParallelUnsafe : IJobFor
+            public struct LayerLayerParallelUnsafe : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -404,7 +404,7 @@ namespace Latios.Psyshock
 
             // Schedule for 3 iterations
             [BurstCompile]
-            public struct LayerLayerPart2_WithSafety : IJobParallelFor
+            public struct LayerLayerPart2_WithSafety : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -479,7 +479,7 @@ namespace Latios.Psyshock
 
             // Schedule for (3 * layer.BucketCount - 2) iterations
             [BurstCompile]
-            public struct LayerLayerPart1 : IJobParallelFor, IFindPairsProcessor
+            public struct LayerLayerPart1 : IJobParallelForBurstSchedulable, IFindPairsProcessor
             {
                 [ReadOnly] public CollisionLayer                                 layerA;
                 [ReadOnly] public CollisionLayer                                 layerB;
@@ -524,7 +524,7 @@ namespace Latios.Psyshock
 
             // Schedule for 2 iterations
             [BurstCompile]
-            public struct LayerLayerPart2 : IJobParallelFor
+            public struct LayerLayerPart2 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -673,7 +673,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerSelfPart1 : IJobParallelFor
+            public struct LayerSelfPart1 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layer;
                 public T                         processor;
@@ -833,7 +833,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerLayerPart1 : IJobParallelFor
+            public struct LayerLayerPart1 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
@@ -853,7 +853,7 @@ namespace Latios.Psyshock
             }
 
             [BurstCompile]
-            public struct LayerLayerPart2 : IJobParallelFor
+            public struct LayerLayerPart2 : IJobParallelForBurstSchedulable
             {
                 [ReadOnly] public CollisionLayer layerA;
                 [ReadOnly] public CollisionLayer layerB;
